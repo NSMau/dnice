@@ -64,10 +64,13 @@ async function getColegio(req, res, next) {
   let colegio = null
 
   try {
-    colegio = await Colegio.findById(req.params.id)
+    colegio = await Colegio.find({ codigo_dane: req.params.id })
 
     if (colegio == null) {
-      return res.status(404).json({ message: 'Cannot find colegio' })
+      return res.status(404).json({
+        message:
+          'No se ha encontrado ningún colegio registrado con el código DANE provisto. Verifica el código e intenta nuevamente.'
+      })
     }
   } catch (error) {
     res.status(500).json({ message: error.message })
