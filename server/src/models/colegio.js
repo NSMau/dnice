@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const colegioSchema = new mongoose.Schema({
   codigo_dane: {
-    type: Number,
+    type: String,
     required: true
   },
   nombre: {
