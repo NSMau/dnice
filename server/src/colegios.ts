@@ -1,64 +1,63 @@
-import { Colegio } from './types'
-
-export const colegios: Colegio[] = [
+export const colegios = [
   {
-    id: '001',
-    codigoDane: '0A00001B430',
-    nombre: 'Colegio 1',
-    sector: 'publico',
-    estado: 'operando',
-    zona: 'TBD',
-    departamento: 'Atlántico',
-    municipio: 'Barranquilla',
-    barrio: 'El Golf',
-    categoria: 'Superior',
-    calendario: 'B',
-    direccion: {
-      rector: 'Juan Barrera',
-      rectora: undefined
+    id: '86601053sdfg998sdgf',
+    codigoDANE: '91798000084',
+    nombre: 'Escuela Santa Teresita',
+    clasificacion: {
+      tipoEstablecimiento: 'CENTRO_EDUCATIVO',
+      sector: 'OFICIAL',
+      caracter: 'NO_APLICA',
+      genero: 'MIXTO',
+      estratoSocioeconomico: 1,
+      categoriaICFES: 'C',
+      licencia: 'SIN_REVISAR'
     },
-    contacto: {
-      email: 'contacto@domain.com',
-      url: 'colegio.com',
-      telefonos: {
-        fijos: ['3042173', '3042174'],
-        celulares: ['3126052700', '3126052701'],
-        fax: ['']
+    estado: 'ANTIGUO_ACTIVO',
+    totalSedes: 1,
+    ofertaAcademica: {
+      calendario: 'A',
+      niveles: ['PREESCOLAR', 'BÁSICA_PRIMARIA'],
+      grados: [0, 1, 2, 3, 4, 5],
+      jornadas: ['MAÑANA'],
+      modelosEducativos: ['ETNOEDUCACIÓN'],
+      idiomas: null,
+      etnias: null,
+      especialidad: null,
+      capacidadesExcepcionales: null,
+      internado: null,
+      discapacidades: null
+    },
+    ubicacion: {
+      departamento: {
+        codigo: 91,
+        nombre: 'Amazonas'
+      },
+      municipio: {
+        codigo: 91798,
+        nombre: 'Tarapacá'
+      },
+      zona: 'RURAL',
+      barrio: null,
+      direccion: 'Comunidad Caña Brava',
+      coordenadas: {
+        latitud: 'sdfasdgdag',
+        longitud: '4534543rfefds',
+        ubicacionMapa: 'safdsafsdf'
       }
     },
-    idiomas: {
-      multiples: true,
-      oferta: ['Inglés', 'Alemán']
-    }
-  },
-  {
-    id: '002',
-    codigoDane: 'FA00001B430',
-    nombre: 'Colegio 2',
-    sector: 'publico',
-    estado: 'operando',
-    zona: 'TBD',
-    departamento: 'Atlántico',
-    municipio: 'Barranquilla',
-    barrio: 'El Golf',
-    categoria: 'Superior',
-    calendario: 'B',
-    direccion: {
-      rector: undefined,
-      rectora: 'María López'
-    },
+    rectoria: 'Álex Daimler Rupi',
     contacto: {
-      email: 'contacto@domain.com',
-      url: 'colegio.com',
+      correoElectronico: '',
+      website: '',
       telefonos: {
-        fijos: ['3042173', '3042174'],
-        celulares: ['3126052700', '3126052701'],
-        fax: ['']
+        celulares: ['3143750495']
       }
     },
-    idiomas: {
-      multiples: true,
-      oferta: ['Inglés', 'Alemán']
-    }
+    redesSociales: null
+    // prestadorServicios: 'OFICIAL',
+    // propiedadPlantaFisica: 'OFICIAL',
+    // resguardo: 'PREDIO PUTUMAYO',
+    // matriculaContratada: 'SI',
+    // secretaria: 'Amazonas'
   }
 ]
