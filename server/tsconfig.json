@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "lib": ["es2015"],
     "newLine": "lf",
-    "module": "commonjs",
+    "module": "node16",
     "moduleResolution": "node",
     "rootDir": "src/",
     "outDir": "dist/",
