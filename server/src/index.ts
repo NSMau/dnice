@@ -4,7 +4,7 @@ import { ApolloServer } from '@apollo/server'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import { expressMiddleware } from '@apollo/server/express4'
 
-import { connectDatabase } from './database/index'
+import { connectDatabase } from './database'
 
 import { Db } from 'mongodb'
 
