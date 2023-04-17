@@ -1,9 +1,12 @@
+import dotenv from 'dotenv'
+
 import { Db, MongoClient } from 'mongodb'
 
-const USER = 'psihipqua'
-const PASSWORD = 'NkaDiqPqAzWxVN9g'
-const CLUSTER = 'cluster0'
-const URI = `mongodb+srv://${USER}:${PASSWORD}@${CLUSTER}.dqabtqb.mongodb.net/?retryWrites=true&w=majority`
+dotenv.config()
+
+const { DB_USER, DB_PASSWORD, DB_CLUSTER } = process.env
+
+const URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_CLUSTER}.dqabtqb.mongodb.net/?retryWrites=true&w=majority`
 const client = new MongoClient(URI)
 
 /**
