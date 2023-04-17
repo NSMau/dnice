@@ -1,7 +1,13 @@
 export const typeDefs = `#graphql
-"This query retrieves all colegios in the database"
 type Query {
+  "This query retrieves all colegios in the database"
   getAllColegios: [Colegio!]!
+  findColegioByCodigoDANE(codigoDANE: String): Colegio
+}
+
+type Mutation {
+  agregarColegio(id: ID!, idDANE: String): Colegio
+  eliminarColegioPorID(codigoDANE: String): Colegio
 }
 
 "This Colegio type defines the queryable fields for every colegio in our data source"
@@ -237,10 +243,5 @@ type RedesSociales {
   twitter: String
   instagram: String
   tiktok: String
-}
-
-type Mutation {
-  agregarColegio(id: ID!, idDANE: String): Colegio
-  eliminarColegioPorID(idDANE: String): Colegio
 }
 `
