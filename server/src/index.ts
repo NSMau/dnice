@@ -52,11 +52,6 @@ const startServer = async (db: Db) => {
   )
 
   console.log(`🚀  Query at: http://localhost:${PORT}/api`)
-
-  // const colegios = (await db
-  //   .collection('test_colegios')
-  //   .find()
-  //   .toArray()) as Colegio[]
 }
 
 const main = async () => {

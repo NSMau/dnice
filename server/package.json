@@ -1,17 +1,18 @@
 {
-  "name": "colcolegios-server",
+  "name": "dnice-server",
   "version": "0.1.0",
-  "description": "Server for the Colcolegios website",
-  "main": "index.js",
+  "description": "Server for the DNICE website",
+  "main": "index.ts",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "tsc -p ./"
+    "build": "tsc -p ./",
+    "seed": "ts-node temp/seed.ts"
   },
   "keywords": [],
   "author": {
     "name": "Mauricio Paternina",
-    "email": "hello@mpr.codes",
-    "url": "https://mpr.codes"
+    "email": "hello@trspl.ms",
+    "url": "https://trspl.ms"
   },
   "license": "ISC",
   "dependencies": {
