@@ -4,23 +4,3 @@ singleQuote: true
 tabWidth: 2
 trailingComma: none
 useTabs: false
-
-importOrder:
-  [
-    '^(react/(.*)$)|^(react$)',
-    '^(next/(.*)$)|^(next$)',
-    '^(contentlayer/generated$)',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^@/stores/(.*)$',
-    '^@/config$',
-    '^@/components/(.*)$',
-    '^@/lib/(.*)$',
-    '^[./]'
-  ]
-importOrderSeparation: false
-importOrderSortSpecifiers: true
-importOrderBuiltinModulesToTop: true
-importOrderParserPlugins: ['typescript', 'jsx']
-importOrderMergeDuplicateImports: true
-importOrderCombineTypeAndValueImports: true

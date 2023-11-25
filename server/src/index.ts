@@ -1,68 +1,61 @@
-import express from 'express'
+import 'dotenv/config'
 
-import { ApolloServer } from '@apollo/server'
-import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
-import { expressMiddleware } from '@apollo/server/express4'
+import { ApolloServer } from 'apollo-server-express'
+import {
+  ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageLocalDefault
+} from 'apollo-server-core'
 
-import { connectDatabase } from './database'
+import connectToDatabase from './database'
 
-import { Db } from 'mongodb'
-
-import { json } from 'body-parser'
-import cors from 'cors'
+import express, { type Application } from 'express'
 import http from 'http'
 
-import { typeDefs, resolvers } from './schema'
+import { resolvers, typeDefs } from './api/graphql'
 
-interface Context {
-  db?: Db
-}
+async function startApolloServer(app: Application): Promise<void> {
+  const db = await connectToDatabase()
 
-const app = express()
-
-// Tell Apollo Server to "drain" this httpServer,
-// enabling our server to shut down gracefully
-const httpServer = http.createServer(app)
-
-const startServer = async (db: Db) => {
-  const server = new ApolloServer<Context>({
+  const { PORT } = process.env
+  const httpServer = http.createServer(app)
+  // The http server handles the request and response cycle made to/from the Express app
+  const server = new ApolloServer({
     typeDefs,
     resolvers,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+    context: () => ({ db }),
+    csrfPrevention: true,
+    cache: 'bounded',
+    plugins: [
+      // Instructs Apollo Server to drain the HTTP server's existing sockets,
+      // enabling graceful shutdown.
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      // Recommended settings to use Apollo Server. For production,
+      // use ApolloServerPluginLandingPageProductionDefault instead.
+      ApolloServerPluginLandingPageLocalDefault({ embed: true })
+    ]
   })
 
   await server.start()
 
-  // Set up our Express middleware to handle CORS, body parsing, and
-  // our expressMiddleware function from Apollo Server
-  app.use(
-    '/api',
-    cors<cors.CorsRequest>(),
-    json(),
-    expressMiddleware<Context>(server, {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      context: async ({ req }) => ({ db })
-    })
-  )
-
-  const PORT = 4000
+  // server.applyMiddleware({ app, path: '/api' })
+  server.applyMiddleware({ app, path: '/' })
 
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: PORT }, resolve)
+  ).catch((error) => {
+    console.log(`❌ Server failed to start due to error: ${error}`)
+    process.exit(1)
+  })
+
+  console.log(
+    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
   )
 
-  console.log(`🚀  Query at: http://localhost:${PORT}/api`)
+  // const colegios = await db.colegios.find({}).toArray()
+  // console.log(colegios)
 }
 
-const main = async () => {
-  const db = await connectDatabase().catch((error) => console.error(error))
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  await startServer(db!)
-}
-
-main().catch((error) => {
-  console.error(error)
-
+startApolloServer(express()).catch((error) => {
+  console.log(`❌ Server failed to start due to error: ${error}`)
   process.exit(1)
 })

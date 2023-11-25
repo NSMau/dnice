@@ -1,6 +1,8 @@
+import { ObjectId } from 'mongodb'
+
 export const colegios = [
   {
-    id: '86601053sdfg998sdgf',
+    id: new ObjectId(),
     codigoDANE: '91798000084',
     nombre: 'Escuela Santa Teresita',
     clasificacion: {
@@ -10,21 +12,21 @@ export const colegios = [
       genero: 'MIXTO',
       estratoSocioeconomico: 1,
       categoriaICFES: 'C',
-      licencia: 'SIN_REVISAR'
+      licencia: 'POR_REVISAR'
     },
     estado: 'ANTIGUO_ACTIVO',
     totalSedes: 1,
     ofertaAcademica: {
       calendario: 'A',
-      niveles: ['PREESCOLAR', 'BÁSICA_PRIMARIA'],
+      niveles: ['PREESCOLAR', 'BASICA_PRIMARIA'],
       grados: [0, 1, 2, 3, 4, 5],
       jornadas: ['MAÑANA'],
-      modelosEducativos: ['ETNOEDUCACIÓN'],
+      modelosEducativos: ['ETNOEDUCACION'],
       idiomas: null,
       etnias: null,
       especialidad: null,
       capacidadesExcepcionales: null,
-      internado: null,
+      internado: false,
       discapacidades: null
     },
     ubicacion: {
@@ -47,13 +49,13 @@ export const colegios = [
     },
     rectoria: 'Álex Daimler Rupi',
     contacto: {
-      correoElectronico: '',
-      website: '',
+      correoElectronico: null,
+      paginaWeb: null,
       telefonos: {
         celulares: ['3143750495']
-      }
-    },
-    redesSociales: null
+      },
+      redesSociales: null
+    }
     // prestadorServicios: 'OFICIAL',
     // propiedadPlantaFisica: 'OFICIAL',
     // resguardo: 'PREDIO PUTUMAYO',

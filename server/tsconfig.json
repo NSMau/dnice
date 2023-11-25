@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "lib": ["es2015"],
-    "newLine": "lf",
-    "module": "node16",
-    "moduleResolution": "node",
-    "rootDir": "src/",
+    "target": "es2017",
+    "module": "NodeNext",
+    "rootDir": "./src/",
     "outDir": "dist/",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "target": "ES2017"
+    "noUnusedLocals": true,
+    "skipLibCheck": true
   },
   "include": ["types/**/*.d.ts", "**/*.ts"],
   "exclude": ["node_modules"]

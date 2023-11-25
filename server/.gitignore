@@ -64,3 +64,9 @@ dist
 
 # Files for VS Code REST Client
 *.rest
+
+# Intellij
+/.idea/
+
+# Temp
+**/temp/
