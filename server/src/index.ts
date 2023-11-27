@@ -11,7 +11,7 @@ import connectToDatabase from './database'
 import express, { type Application } from 'express'
 import http from 'http'
 
-import { resolvers, typeDefs } from './api/graphql'
+import { resolvers, typeDefs } from './graphql'
 
 async function startApolloServer(app: Application): Promise<void> {
   const db = await connectToDatabase()
@@ -37,8 +37,7 @@ async function startApolloServer(app: Application): Promise<void> {
 
   await server.start()
 
-  // server.applyMiddleware({ app, path: '/api' })
-  server.applyMiddleware({ app, path: '/' })
+  server.applyMiddleware({ app, path: '/api' })
 
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: PORT }, resolve)
