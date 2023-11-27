@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import { IColegio, IDatabase } from '../../../../lib/types'
+import { IColegio, IDatabase } from '../../../lib/types'
 
 export const colegioResolvers = {
   Query: {
